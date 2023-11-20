@@ -5,4 +5,4 @@ Complete: Pokedex
 
 In-Progress: Higher-Lower
 
-Planned: Pokedoku, Supereffective
+Planned: Pokedoku, Supereffective, Who's the pokemon
