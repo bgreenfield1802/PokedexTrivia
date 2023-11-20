@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/pokedex.css">
+    <script src="../js/pokedata-min.js" defer></script>
+    <script src="../js/reference-data.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/pokedex.js" defer></script>
+    <noscript>
+        <meta http-equiv="refresh" content="1">
+    </noscript>
+</head>
+<body>
+    <noscript>
+        <p>Please enable javascript to use this site.</p>
+    </noscript>
+    <header>
+        <div class="logo">
+            <img src="../img/logo.png" alt="logo">
+        </div>
+        <nav>
+            <a href="../pokedex" class="active">Pokedex</a>
+            <a href="../pokedoku">Pokedoku</a>
+            <a href="../higher-lower">Higher/ Lower</a>
+            <a href="../whos-that-pokemon">Who's That Pokemon?</a>
+        </nav>
+        <div class="info">
+            <img src="../img/info.png" alt="info">
+        </div>
+    </header>
+    <div id="content" class="content">
+        <div id="pkmnContainer" class="pkmn-container"></div>
+        <div id="navigation" class="navigation"></div>
+        <div class="side-button-container back">
+            <div onclick="previousPage()" id="backButton" class="side-button hidden">&lt;</div>
+        </div>
+        <div class="side-button-container next">
+            <div onclick="nextPage()" id="nextButton" class="side-button hidden">&gt;</div>
+        </div>
+        <div id="tabs" class="tabs closed">
+            <div id="tabToggle" class="toggle" onclick="toggleTabMenu()">&#9650;</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher/Lower</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/higher-lower.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js" integrity="sha512-+Ru50BzEpZjlFzVnjSmJfYFPFfY2hS0Kjlu/IvqaJoux7maF5lJrRVUJWJ2LevPls7rd242GLbWEt+zAo4OVVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="../js/pokedata-min.js" defer></script>
+    <script src="../js/reference-data.js" defer></script>
+    <script src="../js/main.js" defer></script>
+    <script src="../js/higher-lower.js" defer></script>
+    <noscript>
+        <meta http-equiv="refresh" content="1">
+    </noscript>
+</head>
+<body>
+    <noscript>
+        <p>Please enable javascript to use this site.</p>
+    </noscript>
+    <header>
+        <div class="logo">
+            <img src="../img/logo.png" alt="logo">
+        </div>
+        <nav>
+            <a href="../pokedex">Pokedex</a>
+            <a href="../pokedoku">Pokedoku</a>
+            <a href="../higher-lower" class="active">Higher/ Lower</a>
+            <a href="../whos-that-pokemon">Who's That Pokemon?</a>
+        </nav>
+        <div class="info">
+            <img src="../img/info.png" alt="info">
+        </div>
+    </header>
+    <div id="content" class="content">
+        <div id="menu" class="">
+            <div class="menu container">
+                <div class="logo">
+                    <div>Higher</div>
+                    <div>Lower</div>
+                </div>
+                <div class="info">
+                    Test your Pokemon stat knowledge! Select which of the two 
+                    randomly generated Pokemon you believe have the higher or
+                    lower stat.
+                </div>
+                <div class="settings">
+                    <div class="radio-title">Number of Levels</div>
+                    <div class="options">
+                        <input type="radio" value="0" name="levels" id="levels0">
+                        <label for="levels0">5</label>
+                        <input type="radio" value="1" name="levels" id="levels1">
+                        <label for="levels1">10</label>
+                        <input type="radio" value="2" name="levels" id="levels2">
+                        <label for="levels2">25</label>
+                        <input type="radio" value="3" name="levels" id="levels3">
+                        <label for="levels3">100</label>
+                    </div>
+                    <hr>
+                    <div class="radio-title">Difficulty</div>
+                    <div class="options">
+                        <input type="radio" value="0" name="difficulty" id="difficulty0">
+                        <label for="difficulty0">Easy</label>
+                        <input type="radio" value="1" name="difficulty" id="difficulty1">
+                        <label for="difficulty1">Medium</label>
+                        <input type="radio" value="2" name="difficulty" id="difficulty2">
+                        <label for="difficulty2">Hard</label>
+                        <input type="radio" value="3" name="difficulty" id="difficulty3">
+                        <label for="difficulty3">Expert</label>
+                    </div>
+                    <hr>
+                    <div>
+                        <label for="seed">Seed (optional):</label>
+                        <input type="text" name="seed" id="seed">
+                    </div>
+                </div>
+                <div id="start" class="startButton" onclick="startGame()">Start</div>
+            </div>
+        </div>
+        <div id="quiz" class="hidden">
+            <div id="left" class="pkmn left no-answer">
+                <div class="info">
+                    <div id="leftName"></div>
+                    <hr style="width: 250px;">
+                    <img id="leftImg" src="" alt="">
+                    <hr style="width: 250px;">
+                    <h3 id="leftStat"></h3>
+                </div>
+            </div>
+            <div id="right" class="pkmn right no-answer">
+                <div class="info">
+                    <div id="rightName"></div>
+                    <hr style="width: 250px;">
+                    <img id="rightImg" src="" alt="">
+                    <hr style="width: 250px;">
+                    <h3 id="rightStat"></h3>
+                </div>
+            </div>
+            <div id="center" class="center no-answer">
+                <div>Which</div>
+                <div>Pokemon has a</div>
+                <div id="comparison" class="comparison higher"></div>
+                <div>stat?</div>
+            </div>
+            <div class="info-bar info-container">
+                <div id="points">Pts: 0</div>
+                <hr>
+                <div id="level">#/#</div>
+                <hr>
+                <div id="difficulty">Expert</div>
+            </div>
+            <div id="continueButton" class="info-bar continue-container no-answer">
+                <div class="continue">Continue</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
