@@ -18,10 +18,10 @@ function setComparison(comparedPkmn, compareInfo) {
         document.getElementById(side+'Stat').innerHTML = stats[statIndex]+': ???'
     }
     // question
-    const stats = ['HEALTH','ATTACK','DEFENCE','SP.ATTACK','SP.DEFENCE','SPEED','TOTAL']
+    const statNames = ['HEALTH','ATTACK','DEFENCE','SP.ATTACK','SP.DEFENCE','SPEED','TOTAL']
     const compElement = document.getElementById('comparison')
     compElement.classList = 'comparison '+compareInfo[0].toLowerCase()
-    compElement.innerHTML = compareInfo[0].toUpperCase()+'<br/>'+stats[compareInfo[1]]
+    compElement.innerHTML = compareInfo[0].toUpperCase()+'<br/>'+statNames[compareInfo[1]]
 }
 
 function getPokemonStat(pkmnId, statIndex) {
@@ -114,9 +114,10 @@ function makeGuess(guess, side) {
         multiplier = multiplier*multiplierIndex[difficulty]
 
         points += Math.round(10*multiplier)
+        correct += 1
         streak += 1
+        if (streak > highestStreak) { highestStreak = streak }
 
-        correctAnswers.push(1)
         pointElement.innerHTML = ('Pts: '+points)
         
         document.getElementById(side).classList.add('answer')
@@ -125,7 +126,6 @@ function makeGuess(guess, side) {
         leftElement.classList.add('incorrect')
         rightElement.classList.add('incorrect')
         centerElement.classList.add('incorrect')
-        correctAnswers.push(0)
 
         streak = 0
         pointElement.innerHTML = ('Pts: '+points)
@@ -136,7 +136,7 @@ function makeGuess(guess, side) {
     leftElement.removeAttribute('onclick')
     rightElement.removeAttribute('onclick')
 
-
+    answers.push(side)
     revealStats(comparedPkmn[level-1][0], comparedPkmn[level-1][1], compareInfo[level-1][1])
 }
 
@@ -174,11 +174,23 @@ function nextLevel() {
         if (levelsIndex[levels] >= 1000) { levelsDisplay = '&#8734;' }
         document.getElementById('level').innerHTML = level+'/'+levelsDisplay
     } else {
+        // session storage
+        const summaryData = {
+            'seed': seed,
+            'levels': levels,
+            'difficulty': difficulty,
+            'answers': answers,
+            'correct': correct,
+            'highestStreak': highestStreak,
+            'fastestChoice': fastestChoice,
+            'compareInfo': compareInfo,
+            'comparedPkmn': comparedPkmn,
+            'points': points
+        }
+        sessionStorage.setItem('summary', JSON.stringify(summaryData));
+
         // summary screen
-        let params = '?seed='+seed
-        params += '&lvls='+levels
-        params += '&diff='+difficulty
-        window.location.href = "summary/"+params
+        window.location.href = "summary/"
     }
 }
 
@@ -215,20 +227,17 @@ function startGame() {
     nextLevel()
 }
 
-// indexes
-const difficultyRanges = [[21,35],[11,20],[4,10],[1,3]]
-const levelsIndex = [5,10,25,100]
-const difficultyIndex = ['Easy','Medium','Hard','Expert']
-const multiplierIndex = [1, 1.1, 1.25, 1.5, 1.75, 2, 2.5]
-
 // init
 let difficulty = 1
 let levels = 1
 let level = 0
 let points = 0
+let correct = 0
 let streak = 0
+let highestStreak = 0
+let fastestChoice = 0
 let multiplier = 1
-let correctAnswers = []
+let answers = []
 let compareInfo = []
 let comparedPkmn = []
 let seed = getUrlParam('seed')

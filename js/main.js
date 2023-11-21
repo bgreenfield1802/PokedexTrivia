@@ -32,3 +32,9 @@ function toTitleCase(str) {
         }
     );
 }
+
+// indexes
+const difficultyIndex = ['Easy','Medium','Hard','Expert']
+const difficultyRanges = [[21,35],[11,20],[4,10],[1,3]]
+const levelsIndex = [5,10,25,100]
+const multiplierIndex = [1, 1.1, 1.25, 1.5, 1.75, 2, 2.5]

@@ -5,9 +5,177 @@
 
     position: relative;
     overflow-x: hidden;
+
+    font-family: 'pkmn', Arial, sans-serif;
 }
 
-/* ------------- CENTER ------------- */
+/* #region MAIN MENU */
+@font-face {
+    font-family: 'sword';
+    src: url(../media/Sword.otf);
+}
+
+.menu.container {
+    width: 800px;
+    margin: 25px auto;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu .logo {
+    width: 400px;
+    height: 250px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    user-select: none;
+}
+
+.menu .logo div {
+    color: white;
+
+    font-family: 'sword', Arial, sans-serif;
+    font-size: 100pt;
+    line-height: 90pt;
+
+    -webkit-text-stroke: 1px;
+}
+
+.menu .logo div:nth-child(1) {
+    -webkit-text-fill-color: rgb(255, 45, 45);
+    margin-right: auto;
+}
+
+.menu .logo div:nth-child(2) {
+    -webkit-text-fill-color: rgb(45, 45, 255);
+    margin-left: auto;
+}
+
+.menu .info {
+    padding: 15px;
+
+    font-size: 10pt;
+    line-height: 13pt;
+    text-align: center;
+
+    background-color: #222222;
+    border: 2px solid #333333;
+    border-radius: 10px;
+}
+
+.menu .settings {
+    width: 50%;
+    padding: 15px;
+    
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 15px;
+    align-items: center;
+
+    font-size: 9pt;
+
+    background-color: #222222;
+    border: 2px solid #333333;
+    border-radius: 10px;
+}
+
+.menu .settings hr {
+    width: 75%;
+    border-color: #333333;
+}
+
+.menu .settings .radio-title {
+    font-size: 11pt;
+}
+
+.menu .settings .options {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.menu .settings .options label {
+    height: 25px;
+    width: 75px;
+    padding: 5px;
+
+    color: grey;
+    line-height: 25px;
+    text-align: center;
+
+    background-color: #333333;
+    border: 2px solid #444444;
+    border-radius: 15px 0;
+
+    cursor: pointer;
+    user-select: none;
+}
+
+.menu .settings .options label:hover {
+    background-color: #444444;
+    border: 2px solid white;
+}
+
+.menu input[type=radio] {
+    display: none;
+}
+
+.menu input[type=radio]:checked + label {
+    color: white;
+    border-color: white;
+}
+
+.menu input[type=radio]:checked + label.easy {
+    color: limegreen;
+    border-color: white;
+}
+
+.menu input[type=radio]:checked + label.medium {
+    color: gold;
+    border-color: white;
+}
+
+.menu input[type=radio]:checked + label.hard {
+    color: darkorange;
+    border-color: white;
+}
+
+.menu input[type=radio]:checked + label.expert {
+    color: red;
+    border-color: white;
+}
+
+.menu .startButton {
+    width: 200px;
+    height: 60px;
+
+    color: rgb(255, 255, 255);
+    background-color: rgb(11, 80, 11);
+    border: 2px solid rgb(11, 160, 11);
+    border-radius: 10px;
+
+    font-size: 13pt;
+    line-height: 60px;
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+    user-select: none;
+}
+
+.menu .startButton:hover {
+    background-color: rgb(11, 130, 11);
+    border-color: white;
+}
+/* #endregion */
+
+/* #region CENTER */
 .center {
     width: 350px;
     height: 350px;
@@ -24,7 +192,6 @@
     flex-direction: column;
     justify-content: center;
 
-    font-family: 'pkmn', Arial, sans-serif;
     font-size: 15pt;
     text-align: center;
     line-height: 40px;
@@ -56,9 +223,9 @@
 .lower {
     color: rgb(45, 45, 255);
 }
-/* ------------- END CENTER ------------- */
+/* #endregion */
 
-/* ------------- PKMN CONTAINERS ------------- */
+/* #region PKMN CONTAINERS */
 .pkmn {
     height: 100%;
     width: calc(50% - 1px);
@@ -179,11 +346,10 @@
 .selected.pkmn.answer {
     animation: flashGreen 1s;
 }
+/* #endregion */
 
-/* ------------- END PKMN CONTAINERS ------------- */
-
-/* ------------- PKMN INFO ------------- */
-.pkmn .info {
+/* #region PKMN INFO */
+.pkmn .info, .summary .pkmn-summary {
     width: 100%;
     height: 100%;
 
@@ -191,8 +357,6 @@
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-
-    font-family: 'pkmn', Arial, sans-serif;
 }
 
 @media (max-width: 1400px) {
@@ -205,20 +369,20 @@
     }
 }
 
-.pkmn .info h3 {
+.pkmn .info h3, .summary .pkmn-summary h3 {
     text-align: center;
     line-height: 22px;
     max-width: 300px;
     margin: 12px;
 }
 
-.pkmn .info p {
+.pkmn .info p, .summary .pkmn-summary p {
     margin: 12px;
     color: grey;
     text-align: center;
 }
 
-.pkmn .info img {
+.pkmn .info img, .summary .pkmn-summary img {
     width: 300px;
     height: 300px;
 
@@ -238,7 +402,7 @@
 }
 
 @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
+    0% { transform: translate(1px, 1px) rotate(0deg) scale(1.1); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }
     20% { transform: translate(-3px, 0px) rotate(1deg); }
     30% { transform: translate(3px, 2px) rotate(0deg); }
@@ -248,19 +412,19 @@
     70% { transform: translate(3px, 1px) rotate(-1deg); }
     80% { transform: translate(-1px, -1px) rotate(1deg); }
     90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg) scale(1); }
 }
 
-.answer.pkmn.selected .info img {
+.pkmn.selected.answer .info img {
     animation: grow 0.5s;
 }
 
-.answer.pkmn:not(.selected) .info img {
+.pkmn.selected:not(.answer) .info img {
     animation: shake 0.5s;
 }
-/* ------------- END PKMN INFO ------------- */
+/* #endregion */
 
-/* ------------- TOP/BOTTOM INFO ------------- */
+/* #region TOP/BOTTOM INFO */
 .info-bar {
     width: 620px;
     height: 80px;
@@ -277,7 +441,6 @@
     justify-content: space-between;
     align-items: center;
     
-    font-family: 'pkmn', Arial, sans-serif;
     text-align: center;
 
     background-color: #111111;
@@ -301,19 +464,19 @@
     font-size: 15pt;
 }
 
-.info-container .easy {
+.easy {
     color: limegreen;
 }
 
-.info-container .medium {
+.medium {
     color: gold;
 }
 
-.info-container .hard {
-    color: orange;
+.hard {
+    color: darkorange;
 }
 
-.info-container .expert {
+.expert {
     color: red;
 }
 
@@ -346,16 +509,12 @@
     border-color: #888888;
     cursor: not-allowed;
 }
-/* ------------- END TOP/BOTTOM INFO ------------- */
+/* #endregion */
 
-/* ------------- MAIN MENU ------------- */
-@font-face {
-    font-family: 'sword';
-    src: url(../media/Sword.otf);
-}
-
-.menu.container {
-    width: 800px;
+/* #region SUMMARY */
+.summary {
+    width: 90%;
+    max-width: 1200px;
     margin: 25px auto;
 
     display: flex;
@@ -363,135 +522,168 @@
     align-items: center;
     gap: 20px;
 
-    font-family: 'pkmn', Arial, sans-serif;
+    /* background-color: rebeccapurple; */
 }
 
-.menu .logo {
-    width: 400px;
-    height: 250px;
-
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-
-    user-select: none;
-}
-
-.menu .logo div {
+.summary .title {
     color: white;
 
     font-family: 'sword', Arial, sans-serif;
-    font-size: 100pt;
-    line-height: 90pt;
+    font-size: 75pt;
+    line-height: 75pt;
+    text-align: center;
 
     -webkit-text-stroke: 1px;
+    user-select: none;
 }
 
-.menu .logo div:nth-child(1) {
+.summary .title.red {
     -webkit-text-fill-color: rgb(255, 45, 45);
-    margin-right: auto;
 }
 
-.menu .logo div:nth-child(2) {
+.summary .title.blue {
     -webkit-text-fill-color: rgb(45, 45, 255);
-    margin-left: auto;
 }
 
-.menu .info {
-    padding: 15px;
-
-    font-size: 10pt;
-    line-height: 13pt;
-    text-align: center;
-
-    background-color: #222222;
-    border: 2px solid #333333;
-    border-radius: 10px;
+.summary hr {
+    width: 90%;
 }
 
-.menu .settings {
-    width: 50%;
+.summary .content-container {
     padding: 15px;
-    
+
     display: flex;
     flex-flow: column nowrap;
-    gap: 15px;
     align-items: center;
-
-    font-family: 'pkmn', Arial, sans-serif;
-    font-size: 9pt;
+    gap: 15px;
 
     background-color: #222222;
     border: 2px solid #333333;
     border-radius: 10px;
 }
 
-.menu .settings hr {
-    width: 75%;
-    border-color: #333333;
-}
+.summary .info {
+    width: 100%;
+    height: 40px;
 
-.menu .settings .radio-title {
-    font-size: 11pt;
-}
-
-.menu .settings .options {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 25px;
 }
 
-.menu .settings .options label {
-    height: 25px;
-    width: 75px;
-    padding: 5px;
+.summary .info div {
+    text-align: center;
+    line-height: 40px;
+}
 
-    color: grey;
-    line-height: 25px;
+.summary .info.three div {
+    width: 275px;
+}
+
+.summary .info.three div#difficulty {
+    width: 150px;
+}
+
+.summary .info.two div {
+    width: 375px;
+}
+
+.summary .info .vline {
+    height: 100%;
+    width: 0;
+
+    border-left: 1px solid white;
+}
+
+.summary .row {
+    position: relative;
+    margin: 20px auto;
+}
+
+.summary .row .comparison {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.summary .compare-container {
+    height: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.summary .pkmn-summary {
+    height: 400px;
+    transform: scale(.75);
+}
+
+.summary .pkmn-summary {
+    width: 250px;
+}
+
+.summary .pkmn-summary p {
+    margin: 5px;
+
+    font-size: 14pt;
+}
+
+.summary .pkmn-summary h3 {
+    margin: 5px;
+
+    font-size: 16pt;
+    line-height: 25pt;
+}
+
+.summary .comparison .level {
+    font-size: 16pt;
     text-align: center;
 
-    background-color: #333333;
-    border: 2px solid #444444;
-    border-radius: 15px 0;
-
-    cursor: pointer;
-    user-select: none;
+    transform: translateY(-50px);
 }
 
-.menu .settings .options label:hover {
-    background-color: #444444;
-    border: 2px solid white;
-}
+.summary .compare-stat {
+    height: 220px;
+    width: 220px;
 
-.menu input[type=radio] {
-    display: none;
-}
-
-.menu input[type=radio]:checked + label {
-    color: white;
-    border-color: white;
-}
-
-.menu .startButton {
-    width: 200px;
-    height: 60px;
-
-    color: rgb(255, 255, 255);
-    background-color: rgb(11, 80, 11);
-    border: 2px solid rgb(11, 160, 11);
-    border-radius: 10px;
-
-    font-size: 13pt;
-    line-height: 60px;
+    font-size: 14pt;
     text-align: center;
-    text-decoration: none;
+    line-height: 40px;
 
-    cursor: pointer;
-    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: #181818;
+    border: 2px solid #333333;
+    border-radius: 50%;
 }
 
-.menu .startButton:hover {
-    background-color: rgb(11, 130, 11);
-    border-color: white;
+.summary .row .comparison::before {
+    content: '\A';
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.145);
+    top: 0; bottom: 0;
+    width: 253px;
+    border-radius: 15px;
 }
+
+.summary .row .comparison.correct::before {
+    background-color: rgba(50, 205, 50, 0.15);
+}
+.summary .row .comparison.incorrect::before {
+    background-color: rgba(255, 0, 0, 0.15);
+}
+
+.summary .row .comparison.left::before {
+    left: 0;
+}
+.summary .row .comparison.right::before {
+    right: 0;
+}
+
+
+/* #endregion */
