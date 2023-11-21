@@ -173,11 +173,18 @@ function nextLevel() {
         let levelsDisplay = levelsIndex[levels]
         if (levelsIndex[levels] >= 1000) { levelsDisplay = '&#8734;' }
         document.getElementById('level').innerHTML = level+'/'+levelsDisplay
-
-        return true
     } else {
         // summary screen
-        return false
+        let params = '?seed='+seed
+        params += '&lvls='+levels
+        params += '&diff='+difficulty
+        let responses = ''
+        for (let i = 0; i < correctAnswers.length; i++) {
+            responses += String(correctAnswers[i])
+        }
+        params += '&answers='+responses
+
+        window.location.href = "summary/"+params
     }
 }
 
@@ -218,7 +225,7 @@ function startGame() {
 const difficultyRanges = [[21,35],[11,20],[4,10],[1,3]]
 const levelsIndex = [5,10,25,100]
 const difficultyIndex = ['Easy','Medium','Hard','Expert']
-const multiplierIndex = [1, 1.1, 1.25, 1.5, 1.75, 2]
+const multiplierIndex = [1, 1.1, 1.25, 1.5, 1.75, 2, 2.5]
 
 // init
 let difficulty = 1
