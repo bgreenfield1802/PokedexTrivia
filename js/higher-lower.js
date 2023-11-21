@@ -178,12 +178,6 @@ function nextLevel() {
         let params = '?seed='+seed
         params += '&lvls='+levels
         params += '&diff='+difficulty
-        let responses = ''
-        for (let i = 0; i < correctAnswers.length; i++) {
-            responses += String(correctAnswers[i])
-        }
-        params += '&answers='+responses
-
         window.location.href = "summary/"+params
     }
 }
