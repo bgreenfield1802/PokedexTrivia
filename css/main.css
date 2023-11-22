@@ -39,7 +39,7 @@ noscript {
     display: none;
 }
 
-/* ------------- HEADER ------------- */
+/* #region HEADER */
 header {
     width: 100%;
     height: 60px;
@@ -112,4 +112,4 @@ nav a:hover {
     background-color: #333333;
     border-color: white;
 }
-/* ------------- END HEADER ------------- */
+/* #endregion */
