@@ -39,5 +39,5 @@ const difficultyRanges = [[21,35],[11,20],[4,10],[1,3]]
 const levelsIndex = [5,10,25,100]
 const multiplierIndex = [1, 1.1, 1.25, 1.5, 1.75, 2, 2.5]
 
-const imageUrl = 'https://raw.githubusercontent.com/Popokedata[]keAPI/sprites/master/sprites/pokemon/'
+const imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
 

@@ -127,7 +127,7 @@ function createCardElements() {
                 const image = document.createElement('img')
                 let sprite
                 if (!shinySprites){ sprite = 'sprite' } else { sprite = 'shiny_sprite' }
-                image.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+data[pkmnKeys[i]][sprite]
+                image.src = imageUrl+data[pkmnKeys[i]][sprite]
                 image.alt = data[pkmnKeys[i]]['name']
                 imageContainer.append(image)
                 pkmn.append(imageContainer)
