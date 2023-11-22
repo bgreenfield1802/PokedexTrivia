@@ -61,7 +61,7 @@ function createPkmnSummary(pkmn, compareInfo, pkmnStat) {
     pkmnSummary.append(pkmnName)
     pkmnSummary.append(document.createElement('hr'))
     const pkmnImg = document.createElement('img')
-    pkmnImg.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+pokedata[pkmn]['sprite']
+    pkmnImg.src = imageUrl+pokedata[pkmn]['sprite']
     pkmnImg.alt = pokedata[pkmn]['name']
     pkmnSummary.append(pkmnImg)
     pkmnSummary.append(document.createElement('hr'))
@@ -70,7 +70,6 @@ function createPkmnSummary(pkmn, compareInfo, pkmnStat) {
     pkmnSummary.append(statDisplay)
     return pkmnSummary
 }
-
 
 // init
 if (sessionStorage.summary == undefined) {

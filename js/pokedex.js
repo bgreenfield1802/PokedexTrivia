@@ -1,5 +1,3 @@
-imageUrl = 'https://raw.githubusercontent.com/Popokedata[]keAPI/sprites/master/sprites/pokemon/'
-
 function toggleTabMenu() {
     const tabsElement = document.getElementById('tabs')
     const toggleElement = document.getElementById('tabToggle')
@@ -18,7 +16,6 @@ function toggleTabMenu() {
 
 function addFilter(filter) {
     if (filters.length < filterLimit) {
-        pid = 0
         filters.push(filter)
         document.getElementById(filter).setAttribute('onclick','removeFilter(\''+filter+'\')')
         setActiveFilters()
@@ -40,6 +37,7 @@ function removeFilter(filter) {
 }
 
 function setActiveFilters() {
+    document.getElementById('searchbar').value = ''
     for (let i = 0; i < filterList.length; i++) {
         document.getElementById(filterList[i]).classList = 'tab'
     }
@@ -50,18 +48,28 @@ function setActiveFilters() {
     }
 }
 
-function processFilterChange() {
+function processFilterChange(pkmnIndex) {
+    let referenceData = {}
+    if (pkmnIndex == null) { referenceData = pokedata }
+    else {
+        const pkmnKeys = Object.keys(pokedata)
+        for (let i = 0; i < pkmnIndex.length; i++) {
+            referenceData[pkmnKeys[pkmnIndex[i]]] = pokedata[pkmnKeys[pkmnIndex[i]]]
+        }
+    }
+
+    pid = 0
     data = {}
     if (filters.length > 0) {
-        const pkmnKeys = Object.keys(pokedata)
+        const pkmnKeys = Object.keys(referenceData)
         for (let i = 0; i < pkmnKeys.length; i++) {
-            if (filters.every(x => pokedata[pkmnKeys[i]]['tags'].includes(x))) {
-                data[pkmnKeys[i]] = pokedata[pkmnKeys[i]]
+            if (filters.every(x => referenceData[pkmnKeys[i]]['tags'].includes(x))) {
+                data[pkmnKeys[i]] = referenceData[pkmnKeys[i]]
             }
         }
         if (Object.keys(data).length == 0) { data = false }
     }
-    else { data = pokedata }
+    else { data = referenceData }
     window.history.replaceState(null, null, '?pid='+pid+createUrlFilters())
 }
 
@@ -77,7 +85,7 @@ function createUrlFilters() {
 function createCardElements() {
     const container = document.getElementById('pkmnContainer')
     container.innerHTML = ''
-    if (data != false) {
+    if (data != false && Object.keys(data).length > 0) {
         for (let i = pid; i < (parseInt(pid)+cardsDisplayed); i++) {
             if (i < Object.keys(data).length) {
                 const pkmnKeys = Object.keys(data)
@@ -185,9 +193,13 @@ function createCardElements() {
         const error = document.createElement('div')
         error.classList.add('error')
         let message = document.createElement('p')
-        message.innerHTML = ('No Pokemon found with selected tags:')
+        message.innerHTML = ('No Pokemon found with search terms:')
         error.append(message)
         message = document.createElement('p')
+        if (document.getElementById('searchbar').value != '') {
+            message.innerHTML += document.getElementById('searchbar').value
+            if (filters.length > 0) { message.innerHTML += ', ' }
+        }
         for (let i = 0; i < filters.length; i++) {
             message.innerHTML += toTitleCase(filters[i].replace('-',' '))
             if (i != (filters.length-1)) { message.innerHTML += ', ' }
@@ -285,6 +297,29 @@ function previousPage() {
 function gotoPage(pageId) {
     pid = pageId
     window.history.replaceState(null, 'Admin', '?pid='+pid+createUrlFilters())
+    createCardElements()
+    createPageNavigation()
+}
+
+function searchPokemon() {
+    const input = document.getElementById('searchbar').value
+
+    let result
+    if (input != '') {
+        const pkmnKeys = Object.keys(pokedata)
+        const pkmnNames = []
+        for (let i = 0; i < pkmnKeys.length; i++) {
+            pkmnNames.push(pokedata[pkmnKeys[i]]['name'])
+        }
+        const options = {
+            threshold: 0.3,
+            keys: ['pokedex','name','abilities','tags']
+        }
+        const fuse = new Fuse(pkmnNames, options)
+        result = fuse.search(input)
+    } else { result = null }
+
+    processFilterChange(result)
     createCardElements()
     createPageNavigation()
 }

@@ -12,7 +12,7 @@ function setComparison(comparedPkmn, compareInfo) {
         name += '<h3>'+pokedata[pkmnId]['name']+'</h3>'
         document.getElementById(side+'Name').innerHTML = name
         const imgElement = document.getElementById(side+'Img')
-        imgElement.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+pokedata[pkmnId]['sprite']
+        imgElement.src = imageUrl+pokedata[pkmnId]['sprite']
         imgElement.alt = pokedata[pkmnId]['name']
         const stats = ['HP','Atk','Def','SpA','SpD','Spe','BST']
         document.getElementById(side+'Stat').innerHTML = stats[statIndex]+': ???'
