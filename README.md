@@ -1,8 +1,8 @@
 # PokedexTrivia
 Randomized Pokemon and Pokedex trivia and quizzes.
 
-Complete: Pokedex
+Complete: Pokedex, Higher-Lower
 
-In-Progress: Higher-Lower
+In-Progress: Pokedoku
 
-Planned: Pokedoku, Supereffective, Who's that pokemon
+Planned: Supereffective, Who's that pokemon
