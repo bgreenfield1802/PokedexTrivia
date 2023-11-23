@@ -1,3 +1,4 @@
+/* #region GENERAL */
 @font-face {
     font-family: 'pkmn';
     src: url(../media/PressStart2P-Regular.ttf) format('truetype');
@@ -11,7 +12,13 @@ body {
 }
 
 .content {
-    padding: 10px;
+    height: calc(100vh - 62px);
+    padding: 0;
+
+    position: relative;
+    overflow-x: hidden;
+
+    font-family: 'pkmn', Arial, sans-serif;
 }
 
 noscript {
@@ -38,6 +45,23 @@ noscript {
 .hidden {
     display: none;
 }
+
+.easy {
+    color: limegreen;
+}
+
+.medium {
+    color: gold;
+}
+
+.hard {
+    color: darkorange;
+}
+
+.expert {
+    color: red;
+}
+/* #endregion */
 
 /* #region HEADER */
 header {
@@ -113,3 +137,29 @@ nav a:hover {
     border-color: white;
 }
 /* #endregion */
+
+/* #region SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #333;
+  }
+
+/* #endregion */
+
+

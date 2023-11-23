@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex | pkmnArcade</title>
+    <title>Pokedoku | pkmnArcade</title>
     <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="pokedex.css">
+    <link rel="stylesheet" href="pokedoku.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.6/fuse.min.js" integrity="sha512-FwWaT/y9ajd/+J06KL9Fko1jELonJNHMUTR4nGP9MSIq4ZdU2w9/OiLxn16p/zEOZkryHi3wKYsnWPuADD328Q==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <script src="../js/pokedata-min.js" defer></script>
     <script src="../js/reference-data.js" defer></script>
     <script src="../js/main.js" defer></script>
-    <script src="pokedex.js" defer></script>
+    <script src="pokudoku.js" defer></script>
     <noscript>
         <meta http-equiv="refresh" content="1">
     </noscript>
@@ -24,8 +24,8 @@
             <img src="../img/logo.png" alt="logo">
         </div>
         <nav>
-            <a href="../pokedex" class="active">Pokedex</a>
-            <a href="../pokedoku">Pokedoku</a>
+            <a href="../pokedex">Pokedex</a>
+            <a href="../pokedoku" class="active">Pokedoku</a>
             <a href="../higher-lower">Higher/ Lower</a>
             <a href="../super-effective">Super Effective</a>
             <a href="../whos-that-pokemon">Who's That Pokemon?</a>
@@ -34,19 +34,10 @@
             <img src="../img/info.png" alt="info">
         </div>
     </header>
-    <div id="content" class="content">
-        <input type="text" id="searchbar" class="searchbar" onkeyup="searchPokemon()"></input>
-        <div id="pkmnContainer" class="pkmn-container"></div>
-        <div id="navigation" class="navigation"></div>
-        <div class="side-button-container back">
-            <div onclick="previousPage()" id="backButton" class="side-button hidden">&lt;</div>
-        </div>
-        <div class="side-button-container next">
-            <div onclick="nextPage()" id="nextButton" class="side-button hidden">&gt;</div>
-        </div>
-        <div id="tabs" class="tabs closed">
-            <div id="tabToggle" class="toggle" onclick="toggleTabMenu()">&#9650;</div>
-        </div>
+    <div id="content">
+
     </div>
+
+
 </body>
 </html>
