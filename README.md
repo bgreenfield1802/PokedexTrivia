@@ -1,4 +1,4 @@
-# PokedexTrivia
+# PkmnArcade
 Randomized Pokemon and Pokedex trivia and quizzes.
 
 Complete: Pokedex, Higher-Lower
