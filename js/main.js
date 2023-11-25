@@ -1,3 +1,4 @@
+// #region FUNCTIONS
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -24,6 +25,12 @@ function getUrlParam(param) {
     return url.searchParams.get(param);
 }
 
+function hasUrlParam(param) {
+    const urlString = window.location.href
+    const url = new URL(urlString)
+    return url.searchParams.has(param);
+}
+
 function toTitleCase(str) {
     return str.replace(
         /\w\S*/g,
@@ -33,11 +40,157 @@ function toTitleCase(str) {
     );
 }
 
+function openModal(id) {
+    const overlay = document.getElementById('modalOverlay')
+    overlay.classList.remove('hidden')
+    overlay.setAttribute('onclick','closeModal(\''+id+'\')')
+
+    document.getElementById(id).classList.remove('hidden')
+}
+
+function closeModal(id) {
+    const overlay = document.getElementById('modalOverlay')
+    overlay.classList.add('hidden')
+    overlay.removeAttribute('onclick')
+
+    document.getElementById(id).classList.add('hidden')
+}
+// #endregion
+
 // indexes
 const difficultyIndex = ['Easy','Medium','Hard','Expert']
-const difficultyRanges = [[21,35],[11,20],[4,10],[1,3]]
-const levelsIndex = [5,10,25,100]
-const multiplierIndex = [1, 1.1, 1.25, 1.5, 1.75, 2, 2.5]
 
 const imageUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
 
+const filterList = [
+    "normal",
+    "fire",
+    "water",
+    "electric",
+    "grass",
+    "ice",
+    "fighting",
+    "poison",
+    "ground",
+    "flying",
+    "psychic",
+    "bug",
+    "rock",
+    "ghost",
+    "dragon",
+    "dark",
+    "steel",
+    "fairy",
+    "monotype",
+    "duel-type",
+    "kanto",
+    "johto",
+    "hoenn",
+    "sinnoh",
+    "unova",
+    "kalos",
+    "alola",
+    "unknown-origin",
+    "galar",
+    "hisui",
+    "paldea",
+    "mega",
+    "gmax",
+    "starter",
+    "fossil",
+    "fusion",
+    "paradox",
+    "pseudo-legendary",
+    "legendary",
+    "mythical",
+    "ultra-beast",
+    "baby",
+    "stone-evolution",
+    "trade-evolution",
+    "friendship-evolution",
+    "split-evolution",
+    "first-stage",
+    "middle-stage",
+    "final-stage",
+    "single-stage",
+    "male-only",
+    "female-only",
+    "genderless",
+    "gender-differences",
+    "default-form",
+    "alternate-form"
+]
+
+const tagList = {
+    "types": [
+        "bug",
+        "dark",
+        "dragon",
+        "electric",
+        "fairy",
+        "fighting",
+        "fire",
+        "flying",
+        "ghost",
+        "grass",
+        "ground",
+        "ice",
+        "normal",
+        "poison",
+        "psychic",
+        "rock",
+        "steel",
+        "water",
+        "monotype",
+        "duel-type"
+    ],
+    "other": {
+        "regions": [
+            "kanto",
+            "johto",
+            "hoenn",
+            "sinnoh",
+            "unova",
+            "kalos",
+            "alola",
+            "unknown-origin",
+            "galar",
+            "hisui",
+            "paldea"
+        ],
+        "categories": [
+            "mega",
+            "gmax",
+            "starter",
+            "fossil",
+            "fusion",
+            "paradox",
+            "pseudo-legendary",
+            "legendary",
+            "mythical",
+            "ultra-beast",
+            "baby"
+        ],
+        "evoStatus": [
+            "stone-evolution",
+            "trade-evolution",
+            "friendship-evolution",
+            "split-evolution",
+            "first-stage",
+            "middle-stage",
+            "final-stage",
+            "single-stage"
+        ],
+        "gender": [
+            "male-only",
+            "female-only",
+            "genderless",
+            "gender-differences"
+        ]
+    }
+}
+
+const tagTitles = {
+    "mega": "Mega Evolution",
+    "gmax": "Gigantamax"
+}

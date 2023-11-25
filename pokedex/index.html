@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="pokedex.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.6/fuse.min.js" integrity="sha512-FwWaT/y9ajd/+J06KL9Fko1jELonJNHMUTR4nGP9MSIq4ZdU2w9/OiLxn16p/zEOZkryHi3wKYsnWPuADD328Q==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <script src="../js/pokedata-min.js" defer></script>
-    <script src="../js/reference-data.js" defer></script>
     <script src="../js/main.js" defer></script>
     <script src="pokedex.js" defer></script>
     <noscript>
@@ -35,7 +34,7 @@
         </div>
     </header>
     <div id="content" class="content">
-        <input type="text" id="searchbar" class="searchbar" onkeyup="searchPokemon()"></input>
+        <input type="text" id="searchbar" class="searchbar" onkeyup="searchPokemon()" placeholder="Search Pokemon..."></input>
         <div id="pkmnContainer" class="pkmn-container"></div>
         <div id="navigation" class="navigation"></div>
         <div class="side-button-container back">

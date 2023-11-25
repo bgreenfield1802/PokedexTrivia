@@ -6,11 +6,11 @@
     <title>Pokedoku | pkmnArcade</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="pokedoku.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js" integrity="sha512-+Ru50BzEpZjlFzVnjSmJfYFPFfY2hS0Kjlu/IvqaJoux7maF5lJrRVUJWJ2LevPls7rd242GLbWEt+zAo4OVVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.6/fuse.min.js" integrity="sha512-FwWaT/y9ajd/+J06KL9Fko1jELonJNHMUTR4nGP9MSIq4ZdU2w9/OiLxn16p/zEOZkryHi3wKYsnWPuADD328Q==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
     <script src="../js/pokedata-min.js" defer></script>
-    <script src="../js/reference-data.js" defer></script>
     <script src="../js/main.js" defer></script>
-    <script src="pokudoku.js" defer></script>
+    <script src="pokedoku.js" defer></script>
     <noscript>
         <meta http-equiv="refresh" content="1">
     </noscript>
@@ -34,8 +34,61 @@
             <img src="../img/info.png" alt="info">
         </div>
     </header>
-    <div id="content">
-
+    <div id="content" class="content">
+        <div id="puzzle" class="puzzle">
+            <div id="seed" class="seed">Seed: ???</div>
+            <div class="info-h">
+                <div id="hTag0"></div>
+                <div id="hTag1"></div>
+                <div id="hTag2"></div>
+            </div>
+            <div class="info-v">
+                <div id="vTag0"></div>
+                <div id="vTag1"></div>
+                <div id="vTag2"></div>
+            </div>
+            <div class="grid">
+                <div id="square0-0"></div>
+                <div id="square0-1"></div>
+                <div id="square0-2"></div>
+                <div id="square1-0"></div>
+                <div id="square1-1"></div>
+                <div id="square1-2"></div>
+                <div id="square2-0"></div>
+                <div id="square2-1"></div>
+                <div id="square2-2"></div>
+            </div>
+            <div class="info-v">
+                <div></div>
+                <div id="pp">PP<br/>#/#</div>
+                <div></div>
+            </div>
+            <div class="info-h">
+                <div class="buttons">
+                    <a href="">
+                        <img src="../img/repeat.png" alt="Restart Level" draggable="false">
+                    </a>
+                </div>
+                <div class="buttons">
+                    <a href="settings/">
+                        <img src="../img/settings.png" alt="Settings" draggable="false">
+                    </a>
+                </div>
+                <div class="buttons">
+                    <a href="" id="randomLevel">
+                        <img src="../img/shuffle.png" alt="Random Level" draggable="false">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="modalOverlay" class="modal-overlay hidden"></div>
+        <div id="searchModal" class="search-modal hidden">
+            <h4 id="searchTitle">#/#</h4>
+            <p id="searchNotice0" class="notice hidden"></p>
+            <p id="searchNotice1" class="notice hidden"></p>
+            <input type="text" id="searchbar" class="searchbar" onkeyup="searchPokemon()" placeholder="Search Pokemon...">
+            <div id="searchOutput" class="search-output"></div>
+        </div>
     </div>
 
 

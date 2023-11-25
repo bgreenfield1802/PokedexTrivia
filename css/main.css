@@ -61,6 +61,21 @@ noscript {
 .expert {
     color: red;
 }
+
+.searchbar {
+    width: 400px;
+    height: 25px;
+    margin: 15px auto;
+
+    display: block;
+
+    color: white;
+    font-size: 16px;
+
+    background-color: #222222;
+    border: 2px solid #555555;
+    border-radius: 5px;
+}
 /* #endregion */
 
 /* #region HEADER */
@@ -162,4 +177,24 @@ nav a:hover {
 
 /* #endregion */
 
+/* #region MODAL */
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    transition: ease-in-out .2s;
+}
+
+.modal-overlay.hidden {
+    pointer-events: none;
+    opacity: 0;
+    transition: ease-in-out .2s;
+}
+/* #endregion */
 

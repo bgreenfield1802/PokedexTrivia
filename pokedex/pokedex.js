@@ -97,13 +97,12 @@ function createCardElements() {
                     if (j+1 !== data[pkmnKeys[i]]['tags'].length) { pkmn.title += ', ' }
                 }
                 // types
-                const types = document.createElement('div')
-                types.classList.add('types')
+                const typesElement = document.createElement('div')
+                typesElement.classList.add('types')
                 let typeList = []
-                const allTypes = ['bug','dark','dragon','electric','fairy','fighting','fire','flying',
-                    'ghost','grass','ground','ice','normal','poison','psychic','rock','steel','water']
                 for (let j = 0; j < data[pkmnKeys[i]]['tags'].length; j++) {
-                    if (allTypes.includes(data[pkmnKeys[i]]['tags'][j])) {
+                    const tag = data[pkmnKeys[i]]['tags'][j]
+                    if (tagList['types'].includes(tag) && tag != 'monotype' && tag != 'duel-type') {
                         typeList.push(data[pkmnKeys[i]]['tags'][j])
                     }
                 }
@@ -111,9 +110,9 @@ function createCardElements() {
                     const typeImg = document.createElement('img')
                     typeImg.src = '../img/type/'+typeList[j]+'-icon.png'
                     typeImg.alt = typeList[j]
-                    types.append(typeImg)
+                    typesElement.append(typeImg)
                 }
-                pkmn.append(types)
+                pkmn.append(typesElement)
     
                 // dexnum
                 const dexnum = document.createElement('div')
@@ -312,8 +311,7 @@ function searchPokemon() {
             pkmnNames.push(pokedata[pkmnKeys[i]]['name'])
         }
         const options = {
-            threshold: 0.3,
-            keys: ['pokedex','name','abilities','tags']
+            threshold: 0.3
         }
         const fuse = new Fuse(pkmnNames, options)
         result = fuse.search(input)

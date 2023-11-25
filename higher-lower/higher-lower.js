@@ -207,7 +207,7 @@ function startGame() {
     difficulty = document.querySelector('input[name="difficulty"]:checked').value
 
     // seed randomizer
-    if (seed == null || seed == '') { seed = getRandomSeed(12) }
+    if (seed == null || seed == '') { seed = getRandomSeed(9) }
     Math.seedrandom(seed)
     
     // generate levels
@@ -261,6 +261,10 @@ let answers = []
 let compareInfo = []
 let comparedPkmn = []
 let seed = getUrlParam('seed')
+
+const difficultyRanges = [[21,35],[11,20],[4,10],[1,3]]
+const levelsIndex = [5,10,25,100]
+const multiplierIndex = [1, 1.1, 1.25, 1.5, 1.75, 2, 2.5]
 
 const urlLvls = getUrlParam('lvls')
 if (urlLvls != null && urlLvls >= 0 && urlLvls <= 3) { levels = urlLvls }

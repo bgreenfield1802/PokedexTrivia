@@ -13,21 +13,6 @@
     font-size: 10pt;
 }
 
-.searchbar {
-    width: 400px;
-    height: 25px;
-    margin: 15px auto;
-
-    display: block;
-
-    color: white;
-    font-size: 16px;
-
-    background-color: #222222;
-    border: 2px solid #555555;
-    border-radius: 5px;
-}
-
 /* #region TABS */
 .tabs {
     width: 95%;

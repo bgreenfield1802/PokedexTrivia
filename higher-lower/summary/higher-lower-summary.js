@@ -88,6 +88,8 @@ const compareInfo = summaryData['compareInfo']
 const comparedPkmn = summaryData['comparedPkmn']
 const points = summaryData['points']
 
+const levelsIndex = [5,10,25,100]
+
 document.getElementById('seed').innerHTML = 'Seed: '+seed
 document.getElementById('points').innerHTML = 'Points: '+points
 document.getElementById('difficulty').innerHTML = difficultyIndex[difficulty]
